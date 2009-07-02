@@ -1,0 +1,16 @@
+%h4
+  - unless @user.avatar.nil?
+    = image_tag(@user.avatar.public_filename, :alt => "#{@user.login} avatar")
+  = @user.login
+
+%ol
+  - for message in @messages do
+    - next unless current_user.can_view?(message)
+    %li
+      %b= link_to_message(message)
+      %time{:datetime => message.created_at}<
+        = time_ago_in_words(message.created_at), " #{t(:ago)}"
+      %br
+      = truncate(message.body.gsub(/^>.*/,'').gsub(/^[\n\r\s]$/,''), :length => 80)
+
+%footer= paginate(@messages)

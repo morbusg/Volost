@@ -1,0 +1,5 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 100 100">
+  <path d="M0,0 v45 l25,-15 25,15 25,-15 25,15 v-45 z" />
+  <path d="M0,100 v-40 l25,-15 25,15 25,-15 25,15 v40 z" />
+</svg>

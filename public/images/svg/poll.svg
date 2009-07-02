@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1" baseProfile="full"
+  preserveAspectRatio="xMinYMin"
+  width="20" height="20"
+  viewBox="0 0 330 330">
+
+
+  <g stroke="black" stroke-width="10">
+    <circle fill="none" cx="165" cy="165" r="150" />
+    <path stroke="none" fill="black" d="M165,165 l106,106 a150,150 0 0 0 -106,-256 z" />
+    <path fill="none" d="M165,165 h-150" />
+  </g>
+
+</svg>

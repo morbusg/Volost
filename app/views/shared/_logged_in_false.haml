@@ -1,0 +1,11 @@
+- unless current_page?(:controller => 'users', :action => 'new')
+  - content_for :control, link_to(t(:create_new_account), new_user_path)
+
+  - form_for UserSession.new, :url => user_session_path do |user_session_form|
+    = user_session_form.error_messages
+    = user_session_form.label :login, t(:login), :class => 'text'
+    = user_session_form.text_field :login, :class => 'text'
+    = user_session_form.label :password, t(:password)
+    = user_session_form.password_field :password
+
+    = submit_tag t(:log_in)

@@ -1,0 +1,6 @@
+if !@topic.sticky?
+  page << "$$('article header h4 img[src*=\"sticky\"]').invoke('remove');"
+else
+  page << "$(\"article_#{@topic.id}\").down(0).down('h4').insert(
+    {top: '<img src=\"/images/svg/sticky_true.svg\" />'});"
+end

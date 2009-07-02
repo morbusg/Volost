@@ -1,0 +1,5 @@
+page[:fav].replace_html link_to_remote(image_tag("fav_#{@topic.favourite?(current_user)}.png",
+                                                :title => "Toggle favourite"[]),
+                                       :url => toggle_favourite_topic_path(@topic),
+                                       :method => :put)
+#page[:session_info].highlight(:startcolor => '#efaaaa', :endcolor => '#000000')

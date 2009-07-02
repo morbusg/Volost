@@ -1,0 +1,25 @@
+-# TODO: details -tag
+-#- location(link_to(t(:users), users_path), @user.login)
+
+- unless @user.avatar.nil?
+  = image_tag(@user.avatar.public_filename, :alt => "#{@user.login} avatar")
+
+%section{:style => 'display:block'}
+  %strong= @user.login
+  = link_to_edit(@user)
+  = link_to_pm(@user)
+
+  %br
+  %em= @user.designation
+  %br
+
+  %small
+    = t(:joined), ': ', "#{@user.created_at.month}/#{@user.created_at.year.to_s[-2..-1]}"
+    %br
+    = t(:location), ': ', @user.location
+    %br
+    = t(:messages), ': ', link_to(@user.messages_count, user_messages_path(@user))
+    - if logged_in? and @user.id == current_user.id
+      %br
+      = t(:private_messages), ':'
+      = link_to(@user.received_private_messages_count, user_private_messages_path(@user))

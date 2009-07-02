@@ -1,0 +1,15 @@
+- location(t(:users))
+- control(link_to(t(:inactive_users), inactive_users_path))
+
+- for user in @users do
+  - if user.avatar.nil?
+    %tt= link_to('[' + user.login + ']', user_path(user))
+  - else
+    - deg = 5-rand(10)
+    = link_to(image_tag(user.avatar.public_filename, |
+      :alt => user.login + " avatar", |
+      :style => "-webkit-transform:rotate(#{deg}deg);-moz-transform:rotate(#{deg}deg);transform:rotate(#{deg}deg);"), |
+      user) |
+
+%br
+%footer= paginate(@users)

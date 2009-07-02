@@ -1,0 +1,28 @@
+- for category in @categories do # TODO: fragment caching
+  - if(current_user.can_view?(category))
+    %h2<
+      = category.title
+      = link_to_edit(category)
+    %dl
+      - for commune in category.communes do
+        %dt<
+          = link_to(commune.title, commune)
+          = link_to_edit(commune)
+        %dd<
+          = commune.description
+          %br
+          -#= commune.topics_count, " #{t(:topics)}", '.'
+          - if(commune.latest)
+            = link_to(t(:latest) + ':', commune.latest)
+            %address= link_to(commune.latest.author, user_path(commune.latest.user_id))
+            %time{:timedate => commune.latest.created_at}<
+              = l(commune.latest.created_at, :format => :short), '.'
+
+-#%footer
+-#  = t(:latest_user), ': ', link_to(User.last.login, User.last)
+-#  %br
+-#  = t(:present), ': ', User.present.map {|u| link_to(u.login, u)}.join(', ')
+
+-#  :javascript
+-#    $$('form.remote').invoke('hide');
+-#    $$('h2').invoke('observe', 'click', function(event) {$$('form.remote').invoke('toggle');});

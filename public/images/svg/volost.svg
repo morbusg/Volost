@@ -1,0 +1,68 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="225" height="50"
+  viewBox="0 0 225 50">
+
+  <defs>
+    <rect id="ball" width="7.7" height="6.4" rx="4" ry="2.5" />
+    <rect id="oval" width="20.2" height="6.2" rx="3" ry="3" />
+
+    <g id="volost">
+      <g id="letter_v" transform="translate(3.5,0)">
+        <g id="five_balls">
+          <use xlink:href="#ball" />
+          <use xlink:href="#ball" y="6.2" />
+          <use xlink:href="#ball" y="12.3" />
+          <use xlink:href="#ball" y="18.4" />
+          <use xlink:href="#ball" y="24.6" />
+        </g>
+        <use xlink:href="#ball" x="6" y="30.8" />
+        <use xlink:href="#ball" x="12.2" y="37" />
+        <use xlink:href="#ball" x="18.3" y="30.8" />
+        <use xlink:href="#five_balls" x="24.6" />
+      </g>
+
+      <g id="letter_o" transform="translate(42.4,0)">
+        <use xlink:href="#five_balls" y="6.2" />
+        <use xlink:href="#oval" x="6" />
+        <use xlink:href="#oval" x="6" y="36.7" />
+        <use xlink:href="#five_balls" x="24.3" y="6.2" />
+      </g>
+
+      <g id="letter_l" transform="translate(81.8,0)">
+        <use xlink:href="#five_balls" />
+        <use xlink:href="#ball" y="30.8" />
+        <use xlink:href="#oval" x="5.4" y="36.7" transform="scale(1.14,1)" />
+      </g>
+
+      <use xlink:href="#letter_o" x="73" />
+
+      <g id="letter_s" transform="translate(153.5,0)">
+        <use xlink:href="#oval" x="6" />
+        <g id="two_balls">
+          <use xlink:href="#ball" y="6.2" />
+          <use xlink:href="#ball" y="12.3" />
+        </g>
+        <use xlink:href="#ball" x="24.4" y="6.2" />
+        <use xlink:href="#oval" x="6" y="18.6" />
+        <use xlink:href="#ball" y="30.6" />
+        <use xlink:href="#two_balls" x="24.4" y="18.4" />
+        <use xlink:href="#oval" x="6" y="36.7" />
+      </g>
+
+      <g id="letter_t" transform="translate(189.2,0)">
+        <use xlink:href="#oval" />
+        <use xlink:href="#oval" x="12.1" />
+        <use xlink:href="#five_balls" x="12.4" y="6.2" />
+        <use xlink:href="#ball" x="12.4" y="36.9" />
+      </g>
+    </g>
+
+  </defs>
+
+  <g transform="translate(0,4)">
+    <use xlink:href="#volost" fill="none" stroke="black" stroke-width="5" />
+    <use xlink:href="#volost" fill="#a8a589" stroke="none" />
+  </g>
+
+</svg>

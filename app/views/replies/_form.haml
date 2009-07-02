@@ -1,0 +1,35 @@
+-#- unless(request.xhr?)
+-#  -# location(link_to(@commune.title, @commune), link_to(@topic.title, @topic), reply_label)
+
+- unless(@reply.new_record?)
+  = link_to_delete(@reply)
+  = link_to_split(@reply)
+
+= error_messages_for(:reply)
+
+- form_for([@topic,@reply],:html => {:class => 'remote', :multipart => true}) do |reply_form|
+  %p= reply_form.collection_select(:topic_id, @topics, :id, :title) unless(@reply.new_record?)
+  %p~ reply_form.text_area(:body)
+
+  - if(request.xhr?)
+    = link_to_function(image_tag("svg/preview.svg", :title => t(:preview)), "$$('fieldset:last-of-type').invoke('toggle')")
+    = link_to_function(image_tag("svg/attach.svg", :title => t(:pictures)), "$$('fieldset:first-of-type').invoke('toggle')")
+
+  - field_set_tag(t(:pictures)) do
+    - reply_form.fields_for(:pictures) do |picture_form|
+      - if(picture_form.object.new_record?)
+        = picture_form.file_field(:uploaded_data)
+      - else
+        %p= image_tag(picture_form.object.public_filename(:thumb))
+
+  - if(request.xhr?)
+    - field_set_tag(t(:preview)) do
+      #previewPane
+
+  = submit_tag(t(:accept))
+
+- if(request.xhr?) # FIXME: obtrusive!
+  :javascript
+    markdown_area = new Control.TextArea.ToolBar.Markdown('reply_body',{preview: 'previewPane'});
+    markdown_area.toolbar.container.id = 'markdown_toolbar';
+    $$('fieldset').invoke('hide');

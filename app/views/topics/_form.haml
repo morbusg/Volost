@@ -1,0 +1,41 @@
+- content_for(:head) do # TODO: maybe move to the helper for consistency?
+  = stylesheet_link_tag('markdown_toolbar')
+  = javascript_include_tag('prototype', 'control.object.event', 'showdown')
+  = javascript_include_tag('control.textarea', 'control.textarea.markdown')
+
+- unless(@topic.new_record?)
+  = link_to_delete(@topic)
+  = link_to_toggle_locked(@topic)
+  = link_to_toggle_sticky(@topic)
+
+= error_messages_for(:topic)
+
+- form_for([@commune,@topic], :html => {:multipart => true}) do |message_form|
+  %p= message_form.collection_select(:commune_id, @communes, :id, :title) unless(@topic.new_record?)
+  %p= message_form.text_field(:title)
+  %p~ message_form.text_area(:body)
+
+  -#- if(request.xhr?)
+  = render_topic_options
+
+  - field_set_tag(t(:choices)) do
+    - message_form.fields_for(:choices) do |choice_form|
+      = choice_form.text_field(:description)
+
+  - field_set_tag(t(:pictures)) do
+    - message_form.fields_for(:pictures) do |picture_form|
+      - if(picture_form.object.new_record?)
+        = picture_form.file_field(:uploaded_data)
+      - else
+        %p= image_tag(picture_form.object.public_filename(:thumb))
+
+  - field_set_tag(t(:preview)) do
+    #previewPane
+
+  = submit_tag(t(:accept))
+
+-# FIXME: not exactly unobtrusive although at the bottom
+:javascript
+  m = new Control.TextArea.ToolBar.Markdown('topic_body',{preview: 'previewPane'});
+  m.toolbar.container.id = 'markdown_toolbar';
+  $$('fieldset').invoke('hide');

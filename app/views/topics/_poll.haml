@@ -1,0 +1,17 @@
+- if([@topic.votes & current_user.votes].flatten.empty?)
+  %h5= t(:poll)
+  %ul
+    - for choice in @topic.choices
+      %li
+        - form_for([current_user,Vote.new], :html => {:id => nil, :class => nil}) do |vote|
+          = vote.hidden_field(:choice_id, :value => choice.id)
+          = choice.description
+          = submit_tag(t(:vote))
+- else
+  %h5= t(:poll_results)
+  %ul
+    - for choice in @topic.choices
+      %li<
+        = choice.description
+        %meter{:value => choice.votes_count, :max => @topic.votes.count}<
+          = choice_percentage(@topic, choice), '%'

@@ -1,0 +1,85 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  baseProfile="full" version="1.1"
+  preserveAspectRatio="xMinYMin"
+  viewBox="-10 -10 220 320"
+  >
+  <style type="text/css">
+path, rect { fill:none }
+  </style>
+
+  <defs>
+    <marker id="triangle"
+      viewBox="0 0 10 10" refX="0" refY="5"
+      markerUnits="strokeWidth"
+      markerWidth="4" markerHeight="3"
+      orient="auto">
+      <path d="M0,0 l10,5 -10,5 z" style="fill:black" />
+    </marker>
+  </defs>
+
+  <g transform="translate(10,10)">
+  <g id="topic" stroke="blue" fill="blue">
+    <rect x="20" y="20" width="160" height="260" />
+    <text x="25" y="35">Topic</text>
+    <g id="lines-of-text" transform="translate(0,5)">
+      <path d="M30,45 h80" />
+      <path d="M30,55 h80" />
+      <path d="M30,65 h80" />
+    </g>
+    <use xlink:href="#lines-of-text" y="30" />
+    <use xlink:href="#lines-of-text" y="60" />
+  </g>
+
+  <g id="user" stroke="green" fill="green">
+    <rect x="120" y="30" width="50" height="50" />
+    <text x="125" y="45">User</text>
+  </g>
+
+  <g id="choices" stroke="purple" fill="purple">
+    <rect x="30" y="150" width="80" height="50" />
+    <text x="35" y="165">Choices</text>
+  </g>
+
+  <g id="votes" stroke="maroon" fill="maroon">
+    <rect x="30" y="220" width="80" height="50" stroke-dasharray="1px 1px" />
+    <text x="35" y="235">Votes</text>
+  </g>
+
+  <g id="relations" stroke="black" stroke-width="2" marker-end="url(#triangle)" marker-start="url(#triangle)">
+    <path id="choices_votes" d="M110,240 h20 v-70 h-20" />
+    <path id="user_votes" d="M110,250 h50 v-170" />
+    <path id="choices_topic" d="M30,170 h-30 v-140 h20" />
+    <path id="topic_user" d="M50,20 v-20 h95 v30" />
+  </g>
+  <text font-size="8px" transform="translate(-5,-5)">
+    <textPath xlink:href="#choices_votes" startOffset="18%">
+      belongs_to :choice
+    </textPath>
+    <textPath xlink:href="#user_votes" startOffset="50%">
+      belongs_to :user
+    </textPath>
+    <textPath xlink:href="#choices_topic" startOffset="40%">
+      belongs_to :topic
+    </textPath>
+    <textPath xlink:href="#topic_user" startOffset="30%">
+      belongs_to :user
+    </textPath>
+  </text>
+  <text font-size="8px" transform="translate(8,8)">
+    <textPath xlink:href="#choices_votes" startOffset="30%">
+      has_many :votes
+    </textPath>
+    <textPath xlink:href="#user_votes" startOffset="56%">
+      has_many :votes
+    </textPath>
+    <textPath xlink:href="#choices_topic" startOffset="47%">
+      has_many :choices
+    </textPath>
+    <textPath xlink:href="#topic_user" startOffset="20%">
+      has_many :topics
+    </textPath>
+  </text>
+  </g>
+
+</svg>

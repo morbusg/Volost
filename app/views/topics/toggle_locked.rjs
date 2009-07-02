@@ -1,0 +1,8 @@
+if !@topic.locked?
+  page << "$$('article header h4 img[src*=\"locked\"]').invoke('remove');"
+  page << "$$('nav a:last-child').invoke('show');"
+else
+  page << "$(\"article_#{@topic.id}\").down(0).down('h4').insert(
+    {top: '<img src=\"/images/svg/locked_true.svg\" />'});"
+  page << "$$('nav a:last-child').invoke('hide');"
+end

@@ -1,0 +1,9 @@
+= link_to_unless_current(current_user.login, current_user)
+|
+= link_to(t(:recent), recent_messages_path)
+|
+= link_to t(:logout), logout_path
+
+- form_for Search.new do |search|
+  %input{:type => 'search', :name => 'search[body]'}
+  = image_submit_tag("svg/search.svg")

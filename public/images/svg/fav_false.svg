@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="24" height="24"
+  viewBox="0 0 700 700">
+
+  <path fill="black" transform="translate(-55,-150)" d="M273,239 C206,239 153,292 153,359 C153,493 289,529 381,662 C469,530 610,489 610,359 C610,292 556,239 490,239 C442,239 400,267 381,308 C362,267 321,239 273,239 z" />
+  <!--
+  <path fill="white" transform="translate(-55,-130)" d="M273,239 C206,239 153,292 153,359 C153,493 289,529 381,662 C469,530 610,489 610,359 C610,292 556,239 490,239 C442,239 400,267 381,308 C362,267 321,239 273,239 z" />
+  -->
+</svg>

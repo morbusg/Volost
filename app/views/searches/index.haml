@@ -1,0 +1,7 @@
+%table
+  %th= t(:search_term)
+  %th= t(:search_author)
+  - for search in @searches do
+    %tr
+      %td= search.body
+      %td= search.author || '-'

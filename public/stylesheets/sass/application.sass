@@ -1,0 +1,515 @@
+//!bq_bg = #f3f3f3
+// body_bg = #73705f ~ 
+// header_bg = #541311 ~ maroon
+// header = #fffbe6
+// nav = #ffd ~ cornsilk
+// nav_bg = #4a0907 ~ darkred
+// nav_sh = #ecf1e8
+// section_h = #a77 ~ lightcoral
+// section_bg = #fffbe6 ~ seashell (#fff5ee) | floralwhite (#fffaf0) |
+// lightyellow (#ffffe0) | lemonchiffon (#fffacd) | papayawhip (#ffefd5) | linen(#faf0e6)
+// cornsilk (#fff8dc) | beige (#f5f5dc)
+// section_bg = #fffbe6 ~ cornsilk
+// section_2nd_bg = #ebe7cd ~ moccasin (#ffe4b5) | palegoldenrod (#eee8aa) | beige (#f5f5dc)
+// antiquewhite (#faebd7) | lemonchiffon (#fffacd)
+// dl = #522 ~ 
+// pages_bg = #ebe7cd ~ moccasin
+// input_bg = #ffe ~ ivory (#fffff0)
+// article_header = #555 ~ dimgrey
+// article_footer = #555 ~ dimgrey
+// avatar_sh = #888 ~ gray
+// fieldset_fieldset_border = #a8a589 ~ darkkhaki
+
+//!bq_bg = #fffbe6 + 4
+!admin = indigo
+!article_footer = dimgray
+!article_header = dimgray
+!article_odd_bg = wheat
+!author_bg = moccasin
+!avatar_sh = gray
+!body_bg = #73705f
+!border = burlywood
+!bq_bg = #fdf5e6
+!fieldset_fieldset_bg = wheat
+!h_color = #888
+!header = cornsilk
+!header_bg = maroon
+!input_bg = ivory
+!moderator = green
+!nav = cornsilk
+!nav_bg = darkred
+!nav_sh = linen
+!pages_bg = moccasin
+!poll_bg = burlywood
+!pre = ivory
+!pre_bg = #222
+!search_bg = yellow
+!section_bg = cornsilk
+!section_h = rosybrown
+
+h1
+  :font-size 36px
+  // 18.2 ÷ 36 = 0.505 etc.
+  :line-height .7583em
+  // 0.7583 - 0.505  = 0.2533 ; 0.505 - 0.2533 = 0.2517
+  //:margin .2517em .505em
+  :margin .2517em 0px
+  :color = !h_color
+
+h2
+  :font-size 24px
+  :line-height .7583em
+  //:margin .7583em
+  :margin .7583em 0px
+  :color = !h_color - #111
+
+h3
+  :font-size 21px
+  :line-height .86em
+  //:margin .86em
+  :margin .86em 0px
+  :color = !h_color - #222
+
+h4
+  :font-size 18px
+  :line-height 1.01em
+  //:margin 1.01em
+  :margin 1.01em 0px
+  :color = !h_color - #333
+
+h5
+  :font-size 16px
+  :line-height 1.1375em
+  //:margin 1.1375em
+  :margin 1.1375em 0px
+  :color = !h_color - #444
+
+h6
+  :font-size 14px
+  :line-height 1.3em
+  //:margin 1.3em
+  :margin 1.3em 0px
+  :color = !h_color - #555
+
+a
+  :color maroon
+  //:text-decoration none
+  //&:hover
+  //  :color red
+
+body
+  :background-color = !body_bg
+  :padding 0
+  :margin 0
+  :font
+    :family serif
+    :size 14px
+
+body > header
+  :font
+    :weight normal
+    :family sans-serif
+  :color = !header
+  :display block
+  :background-color = !header_bg
+  :position relative
+  :overflow hidden
+  img
+    :padding 5px
+    :vertical-align top
+    :margin-right 10px
+    :float left
+  h1
+    :font-size 24px
+    :margin 0
+    :padding-top 10px
+    :color = !header
+  h2
+    :margin 0
+    :font-size 18px
+    :color #a8a589
+  a
+    :color = !header
+  //  &:last-of-type:not([href="/"]), &:nth-of-type(2)
+  //    :-webkit-appearance button
+  //    :-moz-appearance button
+  //    :appearance button
+  //    :color black
+  //    :padding .2em .98em
+  //    :font-size 11px
+  aside
+    :text-align right
+    :margin-top 5px
+    :margin-right 10px
+    :display block
+    form
+      :position relative
+      :float right
+      :margin-left 10px
+      input[type="search"]
+        :-webkit-appearance searchfield
+        :-moz-appearance searchfield
+        :appearance searchfield
+        :width 10em
+        + input[type="image"]
+          :position absolute
+          :right .5em
+          :bottom .3em
+      label
+        :font-size 14px
+        :letter-spacing -.1em
+        :width 4em
+        :vertical-align middle
+      input[type="text"], input[type="password"]
+        :width 8em
+        :font-size 10px
+        :padding 1px
+
+nav
+  :font
+    :size x-large
+    :variant small-caps
+    :weight normal
+  :background-color = !nav_bg
+  :color = !nav
+  :display block
+  :padding 0 5px
+  :text-shadow = !nav_sh 0px 0px 3px
+  :text-transform lowercase
+  :position relative
+  :overflow hidden
+  a
+    :color = !nav
+  form
+    :padding 0
+    :margin 0
+    :display inline
+  img
+    //:position fixed
+    //:right 0
+    :width 1.4em
+    :float right
+    //:padding-top .1em
+    :z-index 2
+    // "z-index strictly only applies to relative- or absolute-positioned elements"--Vig
+
+// main content container
+body > section
+  :display block
+  :background-color = !section_bg
+  :margin 1em auto
+  :padding 1em 1.5em
+  :width 36em
+  :position relative
+  h2, h3
+    :color = !section_h
+    :position relative
+    // category edit-link
+    a img
+      //:-webkit-appearance button
+      //:-moz-appearance button
+      //:appearance button
+      //:padding 3px 5px
+      :position absolute
+      :top -.3em
+      :width 1em
+      :height 1em
+  dl
+    :margin-left 1.3em
+    dt
+      :margin-top 1em
+      :position relative
+      :font-weight bold
+      // commune edit-link
+      address, time
+        :font-weight normal
+      a img
+        //:-webkit-appearance button
+        //:-moz-appearance button
+        //:appearance button
+        //:padding 3px 5px
+        :width 1.3em
+        :height 1.3em
+        :position absolute
+        :top -.3em
+      // pagination
+      aside
+        :margin-left .5em
+        :font
+          :family sans-serif
+          :weight bold
+          :size x-small
+        a
+          :padding 0 3px
+          :border = 1px solid !border
+          :background-color = !pages_bg
+    dd
+      :font-style italic
+      :margin-left 1.3em
+      > a:first-of-type
+        :font-weight bold
+  ol
+    :list-style none
+    :padding-left 1em
+    li
+      :margin 1em .2em
+      time
+        :padding-left .5em
+  form
+    :display inline
+  form[action$="replies"]
+    :display block
+    :margin-top 2em
+  input[name="commit"]
+    :margin 1em auto
+    :display block
+  textarea[name$="[body]"]
+    :width 30em
+    :height 20em
+
+address.admin a
+  :color = !admin
+
+address.moderator a
+  :color = !moderator
+
+input:not([type="submit"]):not([type="image"]), textarea, select
+  :background-color = !input_bg
+
+form[method="delete"]
+  :display inline
+
+input#user_email, input#user_website, label[for="user_email"], label[for="user_website"]
+  :display none
+
+// pagination
+section > footer
+  :font
+    :family sans-serif
+    :weight bold
+  :display inline-block
+  :clear both
+  :margin-top 1em
+  :padding 2px
+  :background burlywood
+  :border 1px solid sienna
+  a
+    :padding 0 3px
+    :border 1px solid peru
+    :background-color = !pages_bg
+
+#flash_error, #flash_notice
+  :display block
+  :margin 1em auto
+  :padding 5px
+  :font-weight bold
+  :width 12em
+  :text-align center
+
+#flash_notice
+  :background-color #dfd
+  :border 1px solid green
+
+#flash_error
+  :background-color #fdd
+  :border 1px solid red
+
+address
+  :display inline
+
+section input[type="image"]
+  :-webkit-appearance button
+  :-moz-appearance button
+  :appearance button
+  :padding 3px 5px
+  :width 1.5em
+  :height 1.5em
+
+article
+  :display block
+  :overflow hidden
+  :clear both
+  :position relative
+  header
+    :color = !article_header
+    aside
+      :position absolute
+      :right .2em
+      // topic & reply edit & quote -links
+      a img
+        //:-webkit-appearance button
+        //:-moz-appearance button
+        //:appearance button
+        //:padding 3px 5px
+        :width 1.3em
+        :height 1.3em
+        :margin-left .5em
+    h4
+      :margin 0px
+  // poll
+  section
+    :display block
+    :margin 1em
+    :background-color = !poll_bg
+    :padding 1em
+    :-webkit-border-radius 1em
+    h5
+      :margin 0
+    ul
+      :background-color wheat
+    input[type="submit"]
+      :display inline !important
+      :margin-left 1em !important
+  footer
+    :display block
+    :color = !article_footer
+    :font-style italic
+    :padding-left 1em
+    p
+      :line-height 1em
+    img
+      :max-width 30em
+      :display block
+  img[author]
+    :display inline
+    :float right
+    //:border 3px double #aaa
+    :margin 0 .2em .5em 1.3em
+    :max-width 5.71em
+    :max-height 5.71em
+    :background-color white
+    :-webkit-box-shadow = 0px 0px 10px !avatar_sh
+    :-moz-box-shadow = 0px 0px 10px !avatar_sh
+    :box-shadow = 0px 0px 10px !avatar_sh
+    //:-webkit-transform rotate(2deg)
+  p
+    :text-align justify
+    :line-height 1.4em
+    img
+      :max-width 30em
+      :display block
+  div.hyphenate > p:first-of-type
+    :margin-top 5px
+  article:nth-of-type(odd)
+    :background-color = !article_odd_bg
+  article
+    //:margin 1em 0
+    :padding .5em 1em
+    header aside
+      :margin-right .8em
+    img[author]
+      :margin-top 2em
+
+span.hilight
+  :background-color = !search_bg
+
+time
+  :font-style italic
+
+fieldset
+  :border none
+  :background-color = !fieldset_fieldset_bg
+  :border = 1px solid !border
+  :padding 5px 0
+  :-webkit-border-radius 10px
+  :-moz-border-radius 10px
+  :border-radius 10px
+  legend
+    :margin 1em auto
+    :font-weight bold
+    :padding .2em .8em
+    :-webkit-border-radius .8em
+    :-moz-border-radius .8em
+    :border-radius .8em
+    :background-color = !section_bg
+    :letter-spacing .1em
+    &::first-letter
+      :font-size large
+
+img
+  :border none
+  :vertical-align middle
+
+label
+  :width 10em
+  :text-align right
+  :padding .2em .5em 0 0
+  :display inline-block
+  :vertical-align top
+  &:after
+    :content ':'
+
+pre
+  :background-color = !pre_bg
+  :color = !pre
+  :font-family monospace
+  :padding .5em
+  :overflow scroll
+  :font-size 10px
+
+hr
+  :margin 0
+  :padding 0
+
+blockquote
+  :background-color = !bq_bg
+  //:border 1px solid #ddd
+  :border = 1px solid !border
+  :padding 0px 20px 0px 40px
+  :font-size .9em
+  // 14 * .9 = 12.6, 14 - 12.6 = 1.4
+  :line-height 1.3em
+  :padding-left 10px
+  :margin-left 1.3em
+  :margin-right 10px
+  p + blockquote
+    :background none
+    :background-color = !bq_bg - 2
+    //:border-left 3px solid #dec
+    :border-left 3px solid yellowgreen
+    :padding-left 10px
+    :margin-left 15px
+    :margin-right 0px
+    p + blockquote
+      //:border-left 3px solid #dde
+      :border-left 3px solid lightblue
+      :background-color = !bq_bg - 4
+      :margin-left 0px
+      p + blockquote
+        //:border-left 3px solid #edd
+        :border-left 3px solid coral
+        :background-color = !bq_bg - 6
+        p + blockquote
+          :border-left 3px solid lightgray
+          :background-color = !bq_bg - 8
+
+// commune show moderators
+section > h3 span
+  :font-family sans-serif
+  :font-size small
+  :color gray
+  &:before
+    :content '['
+  &:after
+    :content ']'
+
+section a img[alt*=avatar]
+  :-webkit-box-shadow = 0px 0px 10px !avatar_sh
+  :-moz-box-shadow = 0px 0px 10px !avatar_sh
+  :box-shadow = 0px 0px 10px !avatar_sh
+  :margin -.4em
+  :background white
+
+.fieldWithErrors
+  :display inline
+  input
+    :outline 2px solid red
+
+#errorExplanation
+  h2
+    :font-size 18px
+
+select[name^="user"][multiple="multiple"]
+  :min-width 20em
+
+// vim:foldmethod=indent

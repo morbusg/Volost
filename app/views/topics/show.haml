@@ -1,0 +1,80 @@
+-#- content_for(:head) do
+-#  = javascript_include_tag('Hyphenator', 'prototype')
+-#
+-#- if(current_user.can_create?(@reply))
+-#  - content_for(:head) do
+-#    = stylesheet_link_tag('markdown_toolbar')
+-#    = javascript_include_tag('control.object.event', 'showdown', 'control.textarea')
+-#    = javascript_include_tag('control.textarea.markdown', 'lowpro_mod', 'application')
+-#- track_topic(@topic)
+
+%article{:id => "article_#{@topic.id}"}
+  %header
+    %address{:class => author_class(@topic.user)}<
+      = link_to(@topic.author, user_path(@topic.user_id))
+    %time{:datetime => @topic.created_at}= l(@topic.created_at.in_time_zone, :format => :long)
+    = render_controls(@topic)
+    - if(@topic.sticky?)
+      = image_tag("svg/sticky_true.svg")
+    - if(@topic.locked?)
+      = image_tag("svg/locked_true.svg")
+    %h4= @topic.title
+  - if(@topic.poll? && logged_in?)
+    %section= render(:partial => 'poll')
+  - unless(params[t(:page, :scope => :routes)].to_i > 1)
+    = render_avatar(@topic.user)
+    .hyphenate<~ @topic.body_html
+    - unless @topic.user.signature.blank?
+      %footer<~ @topic.user.signature_html
+    - unless @topic.pictures.empty?
+      - for picture in @topic.pictures do
+        = link_to(image_tag(picture.public_filename(:thumb)), picture.public_filename)
+
+  - for reply in @replies do
+    %article{:id => "article_#{reply.id}"}
+      %header
+        %address{:class => author_class(reply.user)}= link_to(reply.author, reply.user)
+        %time{:datetime => reply.created_at}<
+          = distance_of_time_in_words(@topic.created_at, reply.created_at)
+          = t(:after_topic_creation)
+        = render_controls(reply)
+      = render_avatar(reply.user)
+      .hyphenate<~ reply.body_html
+      - for picture in reply.pictures do
+        = link_to(image_tag(picture.public_filename(:thumb)), picture.public_filename)
+      - unless(reply.user.signature.blank?)
+        %footer<~ reply.user.signature_html
+
+- if(@topic.replies_count > REPLIES_PER_PAGE)
+  %footer= paginate(@replies)
+
+:javascript
+  Hyphenator.run();
+
+-#- if current_user.admin?
+-#  :javascript
+-#    $$('article header aside form:first-of-type').invoke('observe', 'submit', function(event) {
+-#      if(confirm("#{CONFIRM_TXT}")) {
+-#        return true;
+-#      } else {
+-#        this.action = "/#{t(:communes, :scope => :routes)}/cancel_delete_confirmation";
+-#        return false;
+-#      }
+-#    });
+-#    $$('article article header aside form:nth-of-type(2)').invoke('observe', 'submit', function(event) {
+-#      if(confirm("#{CONFIRM_TXT}")) {
+-#        return true;
+-#      } else {
+-#        this.action = "/#{t(:communes, :scope => :routes)}/cancel_delete_confirmation";
+-#        return false;
+-#      }
+-#    });
+-#  $$('article header aside').invoke('toggle');
+-#  $$('article header time').invoke('observe', 'click', function(event) {
+-#    this.next(0).toggle();
+-#  });
+
+- if @topic.locked? and logged_in?
+  :javascript
+    $$('nav a:last-child').invoke('hide');
+    $$('article header aside').invoke('hide');

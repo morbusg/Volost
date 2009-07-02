@@ -1,0 +1,30 @@
+= link_to_delete(@user) if !@user.new_record? and current_user.can_modify?(@user)
+
+= error_messages_for(:user)
+
+- form_for(@user, :builder => LabeledBuilder, :html=> {:multipart => true}) do |user_form|
+  %p= user_form.text_field(:login)
+  %p= user_form.text_field(:email) unless(request.headers["User-Agent"] =~ TEXT_BROWSERS)
+  %p= user_form.password_field(:password)
+  %p= user_form.password_field(:password_confirmation)
+
+  - field_set_tag(t(:optional_information)) do
+    %p= user_form.date_select(:birthday, :start_year => (Time.now.year - 60), |
+      :end_year => (Time.now.year - 10), :include_blank => true) |
+    %p= user_form.text_field(:website) unless(request.headers["User-Agent"] =~ TEXT_BROWSERS)
+    - unless(@user.new_record? or !@user.active?)
+      - user_form.fields_for(:avatar) do |avatar_form|
+        %p= avatar_form.file_field(:uploaded_data)
+    %p= user_form.text_area(:signature, :size => '28x3')
+    %p= user_form.text_field(:location)
+    %p= user_form.select(:time_zone, ZONES, :include_blank => true)
+
+  - if(current_user.admin?)
+    - field_set_tag(t(:admin_functions)) do
+      %p= user_form.check_box(:active)
+      %p= user_form.check_box(:admin)
+      %p= user_form.text_field(:designation)
+      %p= user_form.select(:category_ids, @categories, {}, {:multiple => true})
+      %p= user_form.select(:commune_ids, @communes, {}, {:multiple => true})
+
+  = submit_tag(t(:accept))

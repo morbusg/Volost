@@ -1,0 +1,18 @@
+- content_for(:head) do
+  = stylesheet_link_tag('markdown_toolbar')
+  = javascript_include_tag('prototype', 'control.object.event', 'showdown')
+  = javascript_include_tag('control.textarea', 'control.textarea.markdown')
+
+- form_for([@user, PrivateMessage.new]) do |pm|
+  ~ pm.text_area(:body)
+  = pm.hidden_field(:receiver_id, :value => params[:receiver_id])
+
+  = submit_tag(t(:accept))
+
+  - field_set_tag(t(:preview)) do
+    #previewPane
+
+:javascript
+  m = new Control.TextArea.ToolBar.Markdown("private_message_body",{preview: 'previewPane'});
+  m.toolbar.container.id = 'markdown_toolbar';
+  $$('fieldset:first-of-type').invoke('hide');

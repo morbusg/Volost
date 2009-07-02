@@ -1,0 +1,8 @@
+%ol
+  - for message in @messages do
+    %b= link_to(message)
+    %address= link_to(message.author, message.user)
+    %time{:datetime => message.created_at}<
+      = time_ago_in_words(message.created_at), " #{t(:ago)}"
+    %br
+    = truncate(message.body.gsub(/^>.*/,'').gsub(/^[\n\r\s]$/,''), :length => 80)

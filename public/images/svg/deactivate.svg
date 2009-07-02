@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1" baseProfile="full"
+  viewBox="0 0 256 256"
+  width="128" height="128"
+  preserveAspectRatio="xMinYMin">
+
+  <!--
+  <image xlink:href="person.jpg" width="86" height="211" />
+  -->
+
+  <image xlink:href="but_bg.svg" width="100%" height="100%" />
+
+  <g stroke-linecap="round" transform="translate(40,23) scale(.9)" >
+    <circle fill="black" cx="44" cy="18" r="18" />
+    <path fill="none" stroke="black" stroke-width="18"
+      d="M12,112 v-65 m60,0 v65 M32,200 v-70 h20 v70" />
+    <path stroke="black" stroke-width="23" d="M15,48 h54" />
+    <rect fill="black" x="23" y="61" width="38" height="63" />
+  </g>
+  <text x="140" y="146" font-size="120" font-weight="bold" font-family="Verdana" fill="black">-</text>
+
+  <g stroke-linecap="round" transform="translate(40,25) scale(.9)" >
+    <circle fill="white" cx="44" cy="20" r="18" />
+    <path fill="none" stroke="white" stroke-width="18"
+      d="M12,114 v-65 m60,0 v65 M32,200 v-70 h20 v70" />
+    <path stroke="white" stroke-width="23" d="M15,51 h54" />
+    <rect fill="white" x="23" y="61" width="38" height="63" />
+  </g>
+  <text x="140" y="150" font-size="120" font-weight="bold" font-family="Verdana" fill="white">-</text>
+
+</svg>

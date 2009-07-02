@@ -1,0 +1,10 @@
+%li
+  %b= link_to_message(message)
+  %time{:datetime => message.created_at}<
+    = time_ago_in_words(message.created_at), " #{t(:ago)}"
+  %br
+  = truncate(message.body.gsub(/^>.*/,'').gsub(/^[\n\r\s]$/,''), :length => 80)
+
+-#:javascript
+-#  new Control.ToolTip($("#{dom_id(message, :author)}"),
+-#  "#{escape_javascript(render :partial => 'users/user', :object => message.user)}",{});

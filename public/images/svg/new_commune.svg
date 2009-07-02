@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  preserveAspectRatio="xMinYMin"
+  width="32" height="32"
+  viewBox="0 0 330 330">
+
+  <defs>
+    <g id="bubble" fill="white" stroke="black" stroke-width="3">
+      <ellipse cx="159" cy="138" rx="126" ry="96" />
+      <path d="M215,223 q-10,53 -59,50 q16,-20 11,-40" />
+    </g>
+  </defs>
+
+  <use xlink:href="#bubble" transform="scale(.6) translate(200,20)" />
+  <use xlink:href="#bubble" transform="scale(.6) scale(-1,-1) translate(-350,-500)" />
+
+</svg>

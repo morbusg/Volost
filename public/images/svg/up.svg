@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  width="14" height="14" viewBox="0 0 100 100">
+  <!-- <image xlink:href="down.svg" width="100" height="100"
+    transform="rotate(180, 50,50)" /> -->
+  <path fill="none" stroke="black" stroke-width="10"
+    stroke-linecap="round" stroke-linejoin="round"
+    transform="rotate(180, 50,50)"
+    d="M50,0 v95 l-45,-45 m45,45 l45,-45" />
+</svg>

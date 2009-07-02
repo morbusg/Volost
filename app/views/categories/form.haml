@@ -1,0 +1,12 @@
+= link_to_delete(@category)
+= render_directions(@category)
+
+- form_for(@category, :builder => LabeledBuilder) do |category_form|
+  %p= category_form.text_field(:title)
+  %p= category_form.check_box(:public)
+
+  = submit_tag(t(:accept))
+
+  - unless(@category.new_record? || @category.public?)
+    - field_set_tag(t(:users)) do
+      %p= category_form.collection_select(:user_ids, User.all, :id, :login, {}, {:multiple => true})

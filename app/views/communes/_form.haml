@@ -1,0 +1,29 @@
+= link_to_delete(@commune) unless(@commune.new_record?)
+= render_directions(@commune) unless(@commune.new_record?)
+
+- content_for(:head) do # TODO: maybe move to helper for consistency
+  = javascript_include_tag('prototype')
+
+= error_messages_for(:commune)
+
+- form_for(@commune, :builder => LabeledBuilder) do |commune_form|
+  %p= commune_form.text_field(:title), '*'
+  %p= commune_form.text_field(:description)
+  %p= commune_form.collection_select(:category_id, @categories, :id, :title), '*'
+  = submit_tag t(:accept)
+
+- field_set_tag t(:new_category) do
+  - form_for(Category.new, :builder => LabeledBuilder) do |category_form|
+    %p= category_form.text_field(:title)
+    %p= category_form.check_box(:public)
+    = submit_tag(t(:accept))
+
+-#:javascript
+-#  $$('form:first-of-type').invoke('observe', 'submit', function(event) {
+-#    if(confirm("#{CONFIRM_TXT}")) {
+-#      return true;
+-#    } else {
+-#      this.action = "/seriously_dont_do_anything";
+-#      return false;
+-#    }
+-#  });

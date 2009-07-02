@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="20"
+  height="20"
+  >
+  <circle fill="lightgray" stroke="black" opacity=".4" cx="8" cy="8" r="7" />
+  <path stroke="black" stroke-width="3" stroke-linecap="round" d="M13.5,13.5 l8,8" />
+</svg>

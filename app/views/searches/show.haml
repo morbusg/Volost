@@ -1,0 +1,25 @@
+- location(t(:search_results))
+-# TODO render spinner while fetching and verifying stuff
+- content_for :head do
+  = javascript_include_tag 'hilight', 'prototype'
+
+- for message in @search.messages do
+  - if current_user.can_view?(message)
+    %li
+      %b= link_to_message(message)
+      %time{:datetime => message.created_at}<
+        = time_ago_in_words(message.created_at), " #{t(:ago)}"
+      %br
+      = truncate(message.body.gsub(/^>.*/,'').gsub(/^[\n\r\s]$/,''), :length => 80)
+
+    -#= render :partial => 'shared/message', :object => message
+
+-#%style{ :type => 'text/css' }
+-#  :sass
+-#    article:nth-of-type(even)
+-#      :background-color #ebe7cd
+-#      :padding .5em 1em
+
+:javascript
+  highlightSearchTerms("#{@search.body}");
+  $$('article header aside').invoke('hide');

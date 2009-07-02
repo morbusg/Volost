@@ -1,0 +1,3 @@
+- fields_for "topic[make_pictures][]", add_picture do |p|
+  = p.file_field :uploaded_data
+  = p.hidden_field :user_id, :value => current_user.id

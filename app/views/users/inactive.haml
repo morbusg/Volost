@@ -1,0 +1,7 @@
+- location(link_to(t(:users), users_path), t(:inactive_users))
+
+= button_to(t(:activate_all), {:action => :activate_all}, :method => :put)
+
+- for user in @users do
+  %tt= link_to('[' + user.login + ']', user_path(user))
+  = button_to(t(:activate), toggle_active_user_path(user), :method => :put)

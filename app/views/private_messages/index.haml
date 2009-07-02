@@ -1,0 +1,24 @@
+- location(link_to(t(:users), users_path), link_to(@user.login, @user), t(:private_messages))
+
+%h2= t(:received)
+- for pm in @user.received_private_messages do
+  %article
+    %header
+      %address{:class => author_class(pm.user)}<
+        = link_to(pm.user.login, user_path(pm.user_id))
+      %time{:datetime => pm.created_at}= l(pm.created_at.in_time_zone, :format => :long)
+      %aside= link_to_edit(pm)
+    = render_avatar(pm.user)
+    .hyphenate<~ pm.body_html
+    - unless pm.user.signature.blank?
+      %footer<~ pm.user.signature_html
+
+%h2= t(:sent)
+- for pm in @user.sent_private_messages do
+  %article
+    %header
+      %address{:class => author_class(pm.receiver)}<
+        = link_to(pm.receiver.login, user_path(pm.receiver_id))
+      %time{:datetime => pm.created_at}= l(pm.created_at.in_time_zone, :format => :long)
+      %aside= link_to_edit(pm)
+  .hyphenate<~ pm.body_html
