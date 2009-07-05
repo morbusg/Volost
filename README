@@ -19,8 +19,6 @@ TODO:
   - separate functionality from content properly
   - proper caching logic
   - make proper use of authlogic
-  - inactive users (automatically all but first created user) can't log in
-    this is due to switching to authlogic I guess
   - tons of other stuff which I can't remember right now
 
 License (where applicable, ie. "code" I've written):
