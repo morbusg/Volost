@@ -39,8 +39,8 @@ class Topic < Message
 
   # Access control {{{
   def creatable_by?(user)
-    return false if user.respond_to?(:sup?)
-    return false if !user.active?
+    return false if user.is_a?(AnonymousUser)
+    return false unless user.active?
     return true if commune.category.public?
     commune.category.users.include?(user)
   end

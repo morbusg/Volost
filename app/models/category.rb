@@ -24,7 +24,7 @@ class Category < ActiveRecord::Base
   end
 
   def viewable_by?(user)
-    return true if public?
+    return true if self.public?
     return false unless user.active?
     users.include?(user)
   end

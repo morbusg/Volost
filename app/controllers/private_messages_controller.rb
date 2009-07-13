@@ -5,7 +5,6 @@ class PrivateMessagesController < ApplicationController
   before_filter :verify_modify_permission, :only => [:destroy]
 
   def index
-    @pms = @user.received_private_messages
   end
 
   def show
@@ -22,8 +21,11 @@ class PrivateMessagesController < ApplicationController
   end
 
   def destroy
-    @pm = @user.received_private_messages.find(params[:id])
-    @pm.destroy
+    @pm = PrivateMessage.find(params[:id])
+    case params[:user_id]
+      when @pm.user_id.to_s : @pm.update_attribute('user_id', nil)
+      when @pm.receiver_id.to_s : @pm.update_attribute('receiver_id', nil)
+    end
     redirect_to :back
   end
 

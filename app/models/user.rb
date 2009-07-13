@@ -10,13 +10,10 @@ class User < ActiveRecord::Base
   end
 
   before_create :honeypot
-  before_create { |ud| ud.ips = [] }
   after_create { |ud| ud.toggle!(:admin) and ud.toggle!(:active) if ud.id == 1 }
   before_save { |ud| ud.moderator = true if !ud.communes.empty? }
 
-  xss_terminate   :except => [:ips]
   markdown        :signature
-  serialize       :ips
   #serialize       :favourites
 
   def title
@@ -64,7 +61,7 @@ class User < ActiveRecord::Base
 
   def can_create?(resource)
     return true if self.admin?
-    return false if user.is_a?(AnonymousUser)
+    return false if self.is_a?(AnonymousUser)
     return false unless self.active?
     resource.creatable_by?(self)
   end

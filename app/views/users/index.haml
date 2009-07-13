@@ -1,5 +1,5 @@
 - location(t(:users))
-- control(link_to(t(:inactive_users), inactive_users_path))
+- control(link_to(t(:inactive_users), inactive_users_path)) if current_user.admin?
 
 - for user in @users do
   - if user.avatar.nil?

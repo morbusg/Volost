@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :location
       t.string  :persistence_token, :single_access_token#, :null => false
       t.string  :time_zone
-      t.text    :signature, :signature_html, :ips
+      t.text    :signature, :signature_html
       t.timestamps
     end
   end

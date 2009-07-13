@@ -21,7 +21,7 @@
 
     %nav<
       = yield(:crumbs)
-      = yield(:control)
+      %aside= yield(:control)
 
     - flash.each do |name,msg|
       %p{:id => "flash_#{name}"}= msg
